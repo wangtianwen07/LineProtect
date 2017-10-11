@@ -185,4 +185,112 @@ public class CalculateUtil {
 		}
 		return "100";
 	}
+	
+	//二、纵联距离保护
+	/**
+	 * 工频变化量方向保护  单相接地故障 电压
+	 * @param dz
+	 * @param k
+	 * @param ψ
+	 * @param m
+	 * @return
+	 */
+	public static String gpbhlfxbhDxU(double dz,double k,double ψ,String m) {
+		switch (m) {
+		case "0.9":
+			
+			break;
+		case "0.7":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
+	/**
+	 * 工频变化量方向保护  单相接地故障 电压
+	 * @param dz
+	 * @param k
+	 * @param ψ
+	 * @param m
+	 * @return
+	 */
+	public static String gpbhlfxbhDxI(double dz,double k,double ψ,String m) {
+		switch (m) {
+		case "0.9":
+			
+			break;
+		case "0.7":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
+	/**
+	 * 工频变化量方向保护 相间故障 电压
+	 * @param dz
+	 * @param k
+	 * @param ψ
+	 * @param m
+	 * @return
+	 */
+	public static String gpbhlfxbhXjU(double dz,double k,double ψ,String m) {
+		switch (m) {
+		case "0.9":
+			
+			break;
+		case "0.7":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
+	/**
+	 * 工频变化量方向保护 相间故障  正方向出三相短路时  电压
+	 * @param dz
+	 * @param k
+	 * @param ψ
+	 * @return
+	 */
+	public static String gpbhlfxbhXjU(double dz,double k,double ψ) {
+		
+		return "100";
+	}
+	/**
+	 * 工频变化量方向保护 相间故障 电流
+	 * @param dz
+	 * @param k
+	 * @param ψ
+	 * @param m
+	 * @return
+	 */
+	public static String gpbhlfxbhXjI(double dz,double k,double ψ,String m) {
+		switch (m) {
+		case "0.9":
+			
+			break;
+		case "0.7":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
+	/**
+	 *  工频变化量方向保护 相间故障 正方向出三相短路时 电流
+	 * @param dz
+	 * @param k
+	 * @param ψ
+	 * @return
+	 */
+	public static String gpbhlfxbhXjI(double dz,double k,double ψ) {
+		
+		return "100";
+	}
 }

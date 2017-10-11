@@ -15,6 +15,6 @@ package com.wtw;
 public class Constants {
 
 	public static final String[] types = new String[]{"差动保护","纵联距离保护"};
-	public static final String[] projects = new String[]{"相电流差动保护","零序差动过流保护","工频变化量阻抗"};
+	public static final String[] projects = new String[]{"相电流差动保护","零序差动过流保护","工频变化量阻抗","工频变化量方向保护"};
 	
 }

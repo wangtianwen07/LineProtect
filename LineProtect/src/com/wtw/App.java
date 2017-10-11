@@ -24,6 +24,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import com.wtw.view.GpbhlfxbhDxView;
+import com.wtw.view.GpbhlfxbhXjView;
 import com.wtw.view.GpbhlzkDxView;
 import com.wtw.view.GpbhlzkXjView;
 import com.wtw.view.LxcdglbhView;
@@ -96,6 +98,10 @@ public class App {
 			new GpbhlzkXjView(panelCenter);//相间故障
 		}
 		//二、纵联距离保护
+		if(checks.contains("工频变化量方向保护")) {
+			new GpbhlfxbhDxView(panelCenter);//单相接地故障
+			new GpbhlfxbhXjView(panelCenter);//相间故障
+		}
 		panelCenter.revalidate();
 	}
 }

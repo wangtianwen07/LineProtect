@@ -32,7 +32,7 @@ public class GpbhlzkXjView {
 	public GpbhlzkXjView(JPanel panelCenter) {
 
 		JPanel panel = new JPanel();
-		panel.setBorder(BorderFactory.createLineBorder(Color.red));
+		panel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;

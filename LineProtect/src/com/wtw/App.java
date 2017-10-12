@@ -54,7 +54,7 @@ public class App {
 
 		JLabel lable1 = new JLabel("ÏîÄ¿£º");
 		JPanel panelNorth = new JPanel();
-		panelNorth.setBackground(new Color(122, 122, 122));
+		panelNorth.setBackground(Color.GRAY);
 		panelNorth.add(lable1);
 		JPanel panelCenter = new JPanel();
 		BoxLayout boxLayout = new BoxLayout(panelCenter, BoxLayout.Y_AXIS);

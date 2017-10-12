@@ -27,13 +27,13 @@ import com.wtw.component.MyLabel;
 import com.wtw.component.MyTextField;
 
 /**
- * 零序差动过流保护
+ * 二、纵联距离保护  纵联零序保护
  * @author wangtianwen
  * @version 1.0
  */
-public class LxcdglbhView {
+public class ZllxbhView {
 
-	public LxcdglbhView(JPanel panelCenter) {
+	public ZllxbhView(JPanel panelCenter) {
 		JPanel bigpanel = new JPanel();
 		bigpanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		bigpanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -45,16 +45,16 @@ public class LxcdglbhView {
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 6;
-		panel.add(new JLabel("一.差动保护     B.零序差动过流保护"),c);
+		panel.add(new JLabel("二、纵联距离保护     B.纵联零序保护"),c);
 		
 		c.gridwidth = 1;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 1;
 		c.weightx = 1/3;
-		panel.add(new JLabel("零序差动启动值(A)："),c);
+		panel.add(new JLabel("I0(A)："),c);
 		
-		JTextField qdzField = new MyTextField("启动值");
+		JTextField qdzField = new MyTextField("电流参数值");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 1;
@@ -73,9 +73,9 @@ public class LxcdglbhView {
 				System.out.println("正在计算...");
 				try {
 					double qdz = Double.parseDouble(qdzField.getText());
-					dlzm1_05.setText(CalculateUtil.lxdcglbh(qdz, "1.05")+" A");
-					dlzm2_0.setText(CalculateUtil.lxdcglbh(qdz, "2.0")+ "A");
-					dlzm0_95.setText(CalculateUtil.lxdcglbh(qdz, "0.95")+ "A");
+					dlzm1_05.setText(CalculateUtil.zllxbh(qdz, "1.05")+" A");
+					dlzm2_0.setText(CalculateUtil.zllxbh(qdz, "2.0")+ "A");
+					dlzm0_95.setText(CalculateUtil.zllxbh(qdz, "0.95")+ "A");
 				} catch (Exception exception) {
 					msg.setText(exception.getMessage());
 				}

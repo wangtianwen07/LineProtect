@@ -293,4 +293,217 @@ public class CalculateUtil {
 		
 		return "100";
 	}
+	
+	/**
+	 * 二、纵联距离保护     B.纵联零序保护
+	 * @param I0  电流值
+	 * @param m
+	 * @return
+	 */
+	public static String zllxbh(double I0,String m) {
+		switch (m) {
+		case "1.05":
+			
+			break;
+		case "2.0":
+			
+			break;
+		case "0.95":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
+	
+	/**
+	 * 三、距离保护	接地距离(Ⅰ、Ⅱ、Ⅲ)段	 电压
+	 * @param dz 接地距离定值
+	 * @param k	线路正序阻抗角
+	 * @param ψ 零序补偿系数
+	 * @param m
+	 * @return
+	 */
+	public static String jlbhJdjlU(double dz,double k,double ψ,String m) {
+		switch (m) {
+		case "0.95":
+			
+			break;
+		case "1.05":
+			
+			break;
+		case "0.7":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
+	
+	/**
+	 * 三、距离保护	接地距离(Ⅰ、Ⅱ、Ⅲ)段	 电流
+	 * @param dz 接地距离定值
+	 * @param k	线路正序阻抗角
+	 * @param ψ 零序补偿系数
+	 * @param m
+	 * @return
+	 */
+	public static String jlbhJdjlI(double dz,double k,double ψ,String m) {
+		switch (m) {
+		case "0.95":
+			
+			break;
+		case "1.05":
+			
+			break;
+		case "0.7":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
+	
+	/**
+	 * 三、距离保护	相间距离(Ⅰ、Ⅱ、Ⅲ)段	 电压
+	 * @param dz 接地距离定值
+	 * @param ψ 线路正序阻抗角
+	 * @param m
+	 * @return
+	 */
+	public static String jlbhXjjlU(double dz,double ψ,String m) {
+		switch (m) {
+		case "0.95":
+			
+			break;
+		case "1.05":
+			
+			break;
+		case "0.7":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
+	
+	/**
+	 * 三、距离保护	相间距离(Ⅰ、Ⅱ、Ⅲ)段	电流
+	 * @param dz 接地距离定值
+	 * @param ψ 线路正序阻抗角
+	 * @param m
+	 * @return
+	 */
+	public static String jlbhXjjlI(double dz,double ψ,String m) {
+		switch (m) {
+		case "0.95":
+			
+			break;
+		case "1.05":
+			
+			break;
+		case "0.7":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
+	
+	/**
+	 * 四、零序过流保护	零序过流(Ⅰ、Ⅱ)段	电压
+	 * @param I0 电流参数值
+	 * @param m
+	 * @return
+	 */
+	public static String lxglbhU(double I0,String m) {
+		switch (m) {
+		case "1.05":
+			
+			break;
+		case "0.95":
+			
+			break;
+		case "1.2":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
+	
+	/**
+	 * 四、零序过流保护	零序过流(Ⅰ、Ⅱ)段	电流
+	 * @param I0 电流参数值
+	 * @param m
+	 * @return
+	 */
+	public static String lxglbhI(double I0,String m) {
+		switch (m) {
+		case "1.05":
+			
+			break;
+		case "0.95":
+			
+			break;
+		case "1.2":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
+	
+	/**
+	 * 五、PT断线过流	零序过流
+	 * @param I0   电流参数值
+	 * @param m
+	 * @return
+	 */
+	public static String ptdxglLx(double I0,String m) {
+		switch (m) {
+		case "1.05":
+			
+			break;
+		case "0.95":
+			
+			break;
+		case "1.2":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
+	
+	/**
+	 * 五、PT断线过流	相过流
+	 * @param I0   电流参数值
+	 * @param m
+	 * @return
+	 */
+	public static String ptdxglXgl(double I0,String m) {
+		switch (m) {
+		case "1.05":
+			
+			break;
+		case "0.95":
+			
+			break;
+		case "1.2":
+			
+			break;
+		default:
+			break;
+		}
+		return "100";
+	}
 }

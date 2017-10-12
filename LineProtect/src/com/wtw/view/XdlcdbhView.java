@@ -8,6 +8,7 @@
 package com.wtw.view;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -21,6 +22,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.wtw.CalculateUtil;
+import com.wtw.component.MyButton;
+import com.wtw.component.MyLabel;
+import com.wtw.component.MyTextField;
 
 /**
  * 相电流差动保护
@@ -30,8 +34,10 @@ import com.wtw.CalculateUtil;
 public class XdlcdbhView {
 
 	public XdlcdbhView(JPanel panelCenter) {
+		JPanel bigpanel = new JPanel();
+		bigpanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		bigpanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		JPanel panel = new JPanel();
-		panel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -39,7 +45,7 @@ public class XdlcdbhView {
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 8;
-		panel.add(new JLabel("一.差动保护     A.相电流差动保护 "),c);
+		panel.add(new JLabel("一、差动保护     A.相电流差动保护 "),c);
 		
 		c.gridwidth = 1;
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -48,7 +54,7 @@ public class XdlcdbhView {
 		c.weightx = 1/8;
 		panel.add(new JLabel("差动电流高值(A)："),c);
 		
-		JTextField dlgz = new JTextField("电流高值");
+		JTextField dlgz = new MyTextField("电流高值");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 1;
@@ -61,7 +67,7 @@ public class XdlcdbhView {
 		c.weightx = 1/8;
 		panel.add(new JLabel("差动电流低值(A)："),c);
 		
-		JTextField dldz = new JTextField("电流低值");
+		JTextField dldz = new MyTextField("电流低值");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 3;
 		c.gridy = 1;
@@ -74,20 +80,20 @@ public class XdlcdbhView {
 		c.weightx = 1/8;
 		panel.add(new JLabel("X(C1):"),c);
 		
-		JTextField dlcsz = new JTextField("参数值");
+		JTextField dlcsz = new MyTextField("参数值");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 5;
 		c.gridy = 1;
 		c.weightx = 1/8;
 		panel.add(dlcsz,c);
 		
-		JButton jButton = new JButton("计算");
-		JLabel msg = new JLabel("");
-		JLabel gdzm1_05 = new JLabel("");
-		JLabel gdzm2_0 = new JLabel("");
-		JLabel ddzm1_05 = new JLabel("");
-		JLabel ddzm2_0 = new JLabel("");
-		JLabel ddzm0_95 = new JLabel("");
+		JButton jButton = new MyButton("计算");
+		JLabel msg = new MyLabel("");
+		JLabel gdzm1_05 = new MyLabel("");
+		JLabel gdzm2_0 = new MyLabel("");
+		JLabel ddzm1_05 = new MyLabel("");
+		JLabel ddzm2_0 = new MyLabel("");
+		JLabel ddzm0_95 = new MyLabel("");
 		jButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -173,6 +179,7 @@ public class XdlcdbhView {
 		c.gridx = 5;
 		c.gridy = 3;
 		panel.add(ddzm0_95,c);
-		panelCenter.add(panel);
+		bigpanel.add(panel);
+		panelCenter.add(bigpanel);
 	}
 }

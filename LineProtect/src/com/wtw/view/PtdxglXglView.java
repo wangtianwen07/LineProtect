@@ -27,13 +27,13 @@ import com.wtw.component.MyLabel;
 import com.wtw.component.MyTextField;
 
 /**
- * 零序差动过流保护
+ * 五、PT断线过流	零序过流
  * @author wangtianwen
  * @version 1.0
  */
-public class LxcdglbhView {
-
-	public LxcdglbhView(JPanel panelCenter) {
+public class PtdxglXglView {
+	
+	public PtdxglXglView(JPanel panelCenter) {
 		JPanel bigpanel = new JPanel();
 		bigpanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		bigpanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -45,16 +45,16 @@ public class LxcdglbhView {
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 6;
-		panel.add(new JLabel("一.差动保护     B.零序差动过流保护"),c);
+		panel.add(new JLabel("五、PT断线过流--相过流"),c);
 		
 		c.gridwidth = 1;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 1;
 		c.weightx = 1/3;
-		panel.add(new JLabel("零序差动启动值(A)："),c);
+		panel.add(new JLabel("I0(A)："),c);
 		
-		JTextField qdzField = new MyTextField("启动值");
+		JTextField qdzField = new MyTextField("电流参数值");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 1;
@@ -64,8 +64,8 @@ public class LxcdglbhView {
 		JButton jButton = new MyButton("计算");
 		JLabel msg = new MyLabel("");
 		JLabel dlzm1_05 = new MyLabel("");
-		JLabel dlzm2_0 = new MyLabel("");
 		JLabel dlzm0_95 = new MyLabel("");
+		JLabel dlzm1_2 = new MyLabel("");
 		jButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -73,9 +73,9 @@ public class LxcdglbhView {
 				System.out.println("正在计算...");
 				try {
 					double qdz = Double.parseDouble(qdzField.getText());
-					dlzm1_05.setText(CalculateUtil.lxdcglbh(qdz, "1.05")+" A");
-					dlzm2_0.setText(CalculateUtil.lxdcglbh(qdz, "2.0")+ "A");
-					dlzm0_95.setText(CalculateUtil.lxdcglbh(qdz, "0.95")+ "A");
+					dlzm1_05.setText(CalculateUtil.ptdxglXgl(qdz, "1.05")+" A");
+					dlzm0_95.setText(CalculateUtil.ptdxglXgl(qdz, "0.95")+ "A");
+					dlzm1_2.setText(CalculateUtil.ptdxglXgl(qdz, "1.2")+ "A");
 				} catch (Exception exception) {
 					msg.setText(exception.getMessage());
 				}
@@ -110,25 +110,25 @@ public class LxcdglbhView {
 		c.gridx = 2;
 		c.gridy = 2;
 		c.weightx = 1/6;
-		panel.add(new JLabel("m=2.0时:"),c);
+		panel.add(new JLabel("m=0.95时:"),c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 3;
 		c.gridy = 2;
 		c.weightx = 1/6;
-		panel.add(dlzm2_0,c);
+		panel.add(dlzm0_95,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 4;
 		c.gridy = 2;
 		c.weightx = 1/6;
-		panel.add(new JLabel("m=0.95时:"),c);
+		panel.add(new JLabel("m=1.2时:"),c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 5;
 		c.gridy = 2;
 		c.weightx = 1/6;
-		panel.add(dlzm0_95,c);
+		panel.add(dlzm1_2,c);
 		bigpanel.add(panel);
 		panelCenter.add(bigpanel);
 	}

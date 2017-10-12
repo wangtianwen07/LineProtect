@@ -27,13 +27,12 @@ import com.wtw.component.MyLabel;
 import com.wtw.component.MyTextField;
 
 /**
- * 工频变化量阻抗 单相接地故障
+ * 三、距离保护	相间距离(Ⅰ、Ⅱ、Ⅲ)段
  * @author wangtianwen
  * @version 1.0
  */
-public class GpbhlzkXjView {
-	
-	public GpbhlzkXjView(JPanel panelCenter) {
+public class JlbhXjjlView {
+	public JlbhXjjlView(JPanel panelCenter) {
 		JPanel bigpanel = new JPanel();
 		bigpanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		bigpanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -44,106 +43,91 @@ public class GpbhlzkXjView {
 		c.insets = new Insets(5, 10, 0, 0); // top padding
 		c.gridx = 0;
 		c.gridy = 0;
-		c.gridwidth = 8;
-		panel.add(new JLabel("一.差动保护     C.工频变化量阻抗 "),c);
+		c.gridwidth = 7;
+		panel.add(new JLabel("三、距离保护"),c);
 		
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 1;
-		c.gridwidth = 8;
-		panel.add(new JLabel("2.相间故障"),c);
+		c.gridwidth = 7;
+		panel.add(new JLabel("2.相间距离(Ⅰ、Ⅱ、Ⅲ)段"),c);
 		
 		c.gridwidth = 1;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 2;
-		c.weightx = 1/8;
-		panel.add(new JLabel("DZ(Ω)："),c);
+		c.weightx = 1/6;
+		panel.add(new JLabel("相间距离定值(Ω)："),c);
 		
-		JTextField dzField = new MyTextField("DZ(Ω)");
+		JTextField dzField = new MyTextField("相间距离定值");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 2;
-		c.weightx = 1/8;
+		c.weightx = 1/6;
 		panel.add(dzField,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 2;
 		c.gridy = 2;
-		c.weightx = 1/8;
-		panel.add(new JLabel("K："),c);
+		c.weightx = 1/6;
+		panel.add(new JLabel("线路正序阻抗角(°)："),c);
 		
-		JTextField kField = new MyTextField("K");
+		JTextField ψField = new MyTextField("线路正序阻抗角值");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 3;
 		c.gridy = 2;
-		c.weightx = 1/8;
-		panel.add(kField,c);
-		
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 4;
-		c.gridy = 2;
-		c.weightx = 1/8;
-		panel.add(new JLabel("ψ:"),c);
-		
-		JTextField ψField = new MyTextField("ψ");
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 5;
-		c.gridy = 2;
-		c.weightx = 1/8;
+		c.weightx = 1/6;
 		panel.add(ψField,c);
 		
 		JButton jButton = new MyButton("计算");
 		JLabel msg = new MyLabel("");
-		JLabel UAm1_1 = new MyLabel("");
-		JLabel UBm1_1 = new MyLabel("");
-		JLabel UCm1_1 = new MyLabel("");
-		JLabel IAm1_1 = new MyLabel("");
-		JLabel IBm1_1 = new MyLabel("");
-		JLabel ICm1_1 = new MyLabel("");
+		JLabel UAm0_95 = new MyLabel("");
+		JLabel UBm0_95 = new MyLabel("");
+		JLabel UCm0_95 = new MyLabel("");
+		JLabel IAm0_95 = new MyLabel("");
+		JLabel IBm0_95 = new MyLabel("");
+		JLabel ICm0_95 = new MyLabel("");
 		
-		JLabel UAm0_9 = new MyLabel("");
-		JLabel UBm0_9 = new MyLabel("");
-		JLabel UCm0_9 = new MyLabel("");
-		JLabel IAm0_9 = new MyLabel("");
-		JLabel IBm0_9 = new MyLabel("");
-		JLabel ICm0_9 = new MyLabel("");
+		JLabel UAm1_05 = new MyLabel("");
+		JLabel UBm1_05 = new MyLabel("");
+		JLabel UCm1_05 = new MyLabel("");
+		JLabel IAm1_05 = new MyLabel("");
+		JLabel IBm1_05 = new MyLabel("");
+		JLabel ICm1_05 = new MyLabel("");
 		
-		JLabel UAm1_2 = new MyLabel("");
-		JLabel UBm1_2 = new MyLabel("");
-		JLabel UCm1_2 = new MyLabel("");
-		JLabel IAm1_2 = new MyLabel("");
-		JLabel IBm1_2 = new MyLabel("");
-		JLabel ICm1_2 = new MyLabel("");
+		JLabel UAm0_7 = new MyLabel("");
+		JLabel UBm0_7 = new MyLabel("");
+		JLabel UCm0_7 = new MyLabel("");
+		JLabel IAm0_7 = new MyLabel("");
+		JLabel IBm0_7 = new MyLabel("");
+		JLabel ICm0_7 = new MyLabel("");
 		jButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				msg.setText("");
 				System.out.println("正在计算...");
 				try {
-					double dz = Double.parseDouble(dzField.getText());//电流高值
-					double k = Double.parseDouble(kField.getText());//电流低值
-					double ψ = Double.parseDouble(ψField.getText());//参数值
-					UAm1_1.setText("UA：" + CalculateUtil.gpbhlzkXjU(dz,k,ψ, "1.1")+" V");
-					UBm1_1.setText("UB：" + CalculateUtil.gpbhlzkXjU(dz,k,ψ, "1.1")+" V");
-					UCm1_1.setText("UC：" + CalculateUtil.gpbhlzkXjU(dz,k,ψ, "1.1")+" V");
-					UAm0_9.setText("UA：" + CalculateUtil.gpbhlzkXjU(dz,k,ψ, "0.9")+" V");
-					UBm0_9.setText("UB：" + CalculateUtil.gpbhlzkXjU(dz,k,ψ, "0.9")+" V");
-					UCm0_9.setText("UC：" + CalculateUtil.gpbhlzkXjU(dz,k,ψ, "0.9")+" V");
-					UAm1_2.setText("UA：" + CalculateUtil.gpbhlzkXjU(dz,k,ψ, "1.2")+" V");
-					UBm1_2.setText("UB：" + CalculateUtil.gpbhlzkXjU(dz,k,ψ, "1.2")+" V");
-					UCm1_2.setText("UC：" + CalculateUtil.gpbhlzkXjU(dz,k,ψ, "1.2")+" V");
-					
-					IAm1_1.setText("IA：" + CalculateUtil.gpbhlzkXjI(dz,k,ψ, "1.1")+" A");
-					IBm1_1.setText("IB：" + CalculateUtil.gpbhlzkXjI(dz,k,ψ, "1.1")+" A");
-					ICm1_1.setText("IC：" + CalculateUtil.gpbhlzkXjI(dz,k,ψ, "1.1")+" A");
-					IAm0_9.setText("IA：" + CalculateUtil.gpbhlzkXjI(dz,k,ψ, "0.9")+" A");
-					IBm0_9.setText("IB：" + CalculateUtil.gpbhlzkXjI(dz,k,ψ, "0.9")+" A");
-					ICm0_9.setText("IC：" + CalculateUtil.gpbhlzkXjI(dz,k,ψ, "0.9")+" A");
-					IAm1_2.setText("IA：" + CalculateUtil.gpbhlzkXjI(dz,k,ψ, "1.2")+" A");
-					IBm1_2.setText("IB：" + CalculateUtil.gpbhlzkXjI(dz,k,ψ, "1.2")+" A");
-					ICm1_2.setText("IC：" + CalculateUtil.gpbhlzkXjI(dz,k,ψ, "1.2")+" A");
+					double dz = Double.parseDouble(dzField.getText());
+					double ψ = Double.parseDouble(ψField.getText());
+					UAm0_95.setText("UA：" + CalculateUtil.jlbhXjjlU(dz,ψ, "0.95")+" V");
+					UBm0_95.setText("UB：" + CalculateUtil.jlbhXjjlU(dz,ψ, "0.95")+" V");
+					UCm0_95.setText("UC：" + CalculateUtil.jlbhXjjlU(dz,ψ, "0.95")+" V");
+					UAm1_05.setText("UA：" + CalculateUtil.jlbhXjjlU(dz,ψ, "1.05")+" V");
+					UBm1_05.setText("UB：" + CalculateUtil.jlbhXjjlU(dz,ψ, "1.05")+" V");
+					UCm1_05.setText("UC：" + CalculateUtil.jlbhXjjlU(dz,ψ, "1.05")+" V");
+					UAm0_7.setText("UA：" + CalculateUtil.jlbhXjjlU(dz,ψ, "0.7")+" V");
+					UBm0_7.setText("UB：" + CalculateUtil.jlbhXjjlU(dz,ψ, "0.7")+" V");
+					UCm0_7.setText("UC：" + CalculateUtil.jlbhXjjlU(dz,ψ, "0.7")+" V");
+					IAm0_95.setText("IA：" + CalculateUtil.jlbhXjjlI(dz,ψ, "0.95")+" A");
+					IBm0_95.setText("IB：" + CalculateUtil.jlbhXjjlI(dz,ψ, "0.95")+" A");
+					ICm0_95.setText("IC：" + CalculateUtil.jlbhXjjlI(dz,ψ, "0.95")+" A");
+					IAm1_05.setText("IA：" + CalculateUtil.jlbhXjjlI(dz,ψ, "1.05")+" A");
+					IBm1_05.setText("IB：" + CalculateUtil.jlbhXjjlI(dz,ψ, "1.05")+" A");
+					ICm1_05.setText("IC：" + CalculateUtil.jlbhXjjlI(dz,ψ, "1.05")+" A");
+					IAm0_7.setText("IA：" + CalculateUtil.jlbhXjjlI(dz,ψ, "0.7")+" A");
+					IBm0_7.setText("IB：" + CalculateUtil.jlbhXjjlI(dz,ψ, "0.7")+" A");
+					ICm0_7.setText("IC：" + CalculateUtil.jlbhXjjlI(dz,ψ, "0.7")+" A");
 				} catch (Exception exception) {
 					msg.setText(exception.getMessage());
 				}
@@ -151,144 +135,145 @@ public class GpbhlzkXjView {
 		});
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 6;
+		c.gridx = 4;
 		c.gridy = 2;
-		c.weightx = 1/8;
+		c.weightx = 1/6;
 		panel.add(jButton,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 7;
+		c.gridx = 5;
 		c.gridy = 2;
-		c.weightx = 1/8;
+		c.weightx = 1/6;
 		panel.add(msg,c);
 		
+		//m=0.95
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 3;
 		c.weightx = 1/7;
-		panel.add(new JLabel("m=1.1时:"),c);
+		panel.add(new JLabel("m=0.95时:"),c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 3;
 		c.weightx = 1/7;
-		panel.add(UAm1_1,c);
+		panel.add(UAm0_95,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 2;
 		c.gridy = 3;
 		c.weightx = 1/7;
-		panel.add(IAm1_1,c);
+		panel.add(IAm0_95,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 3;
 		c.gridy = 3;
 		c.weightx = 1/7;
-		panel.add(UBm1_1,c);
+		panel.add(UBm0_95,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 4;
 		c.gridy = 3;
 		c.weightx = 1/7;
-		panel.add(IBm1_1,c);
+		panel.add(IBm0_95,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 5;
 		c.gridy = 3;
 		c.weightx = 1/7;
-		panel.add(UCm1_1,c);
+		panel.add(UCm0_95,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 6;
 		c.gridy = 3;
 		c.weightx = 1/7;
-		panel.add(ICm1_1,c);
+		panel.add(ICm0_95,c);
 		
-		//m=0.9
+		//m=1.05
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 4;
 		c.weightx = 1/7;
-		panel.add(new JLabel("m=0.9时:"),c);
+		panel.add(new JLabel("m=1.05时:"),c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 4;
 		c.weightx = 1/7;
-		panel.add(UAm0_9,c);
+		panel.add(UAm1_05,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 2;
 		c.gridy = 4;
 		c.weightx = 1/7;
-		panel.add(IAm0_9,c);
+		panel.add(IAm1_05,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 3;
 		c.gridy = 4;
 		c.weightx = 1/7;
-		panel.add(UBm0_9,c);
+		panel.add(UBm1_05,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 4;
 		c.gridy = 4;
 		c.weightx = 1/7;
-		panel.add(IBm0_9,c);
+		panel.add(IBm1_05,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 5;
 		c.gridy = 4;
 		c.weightx = 1/7;
-		panel.add(UCm0_9,c);
+		panel.add(UCm1_05,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 6;
 		c.gridy = 4;
 		c.weightx = 1/7;
-		panel.add(ICm0_9,c);
+		panel.add(ICm1_05,c);
 		
-		//m=1.2
+		//m=0.7
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 5;
 		c.weightx = 1/7;
-		panel.add(new JLabel("m=1.2时:"),c);
+		panel.add(new JLabel("m=0.7时:"),c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 5;
 		c.weightx = 1/7;
-		panel.add(UAm1_2,c);
+		panel.add(UAm0_7,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 2;
 		c.gridy = 5;
 		c.weightx = 1/7;
-		panel.add(IAm1_2,c);
+		panel.add(IAm0_7,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 3;
 		c.gridy = 5;
 		c.weightx = 1/7;
-		panel.add(UBm1_2,c);
+		panel.add(UBm0_7,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 4;
 		c.gridy = 5;
 		c.weightx = 1/7;
-		panel.add(IBm1_2,c);
+		panel.add(IBm0_7,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 5;
 		c.gridy = 5;
 		c.weightx = 1/7;
-		panel.add(UCm1_2,c);
+		panel.add(UCm0_7,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 6;
 		c.gridy = 5;
 		c.weightx = 1/7;
-		panel.add(ICm1_2,c);
+		panel.add(ICm0_7,c);
 		bigpanel.add(panel);
 		panelCenter.add(bigpanel);
 	}

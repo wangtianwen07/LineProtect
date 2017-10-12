@@ -28,8 +28,14 @@ import com.wtw.view.GpbhlfxbhDxView;
 import com.wtw.view.GpbhlfxbhXjView;
 import com.wtw.view.GpbhlzkDxView;
 import com.wtw.view.GpbhlzkXjView;
+import com.wtw.view.JlbhJdjlView;
+import com.wtw.view.JlbhXjjlView;
 import com.wtw.view.LxcdglbhView;
+import com.wtw.view.LxglbhView;
+import com.wtw.view.PtdxglLxView;
+import com.wtw.view.PtdxglXglView;
 import com.wtw.view.XdlcdbhView;
+import com.wtw.view.ZllxbhView;
 
 /**
  * @author wangtianwen
@@ -101,6 +107,23 @@ public class App {
 		if(checks.contains("工频变化量方向保护")) {
 			new GpbhlfxbhDxView(panelCenter);//单相接地故障
 			new GpbhlfxbhXjView(panelCenter);//相间故障
+		}
+		if(checks.contains("纵联零序保护")) {
+			new ZllxbhView(panelCenter);
+		}
+		//三、距离保护
+		if(checks.contains("距离保护")) {
+			new JlbhJdjlView(panelCenter);//接地距离(Ⅰ、Ⅱ、Ⅲ)段
+			new JlbhXjjlView(panelCenter);//相间距离(Ⅰ、Ⅱ、Ⅲ)段
+		}
+		//四、零序过流保护
+		if(checks.contains("零序过流保护")) {
+			new LxglbhView(panelCenter);//零序过流(Ⅰ、Ⅱ)段
+		}
+		//五、PT断线过流
+		if(checks.contains("PT断线过流")) {
+			new PtdxglLxView(panelCenter);//零序过流
+			new PtdxglXglView(panelCenter);//零序过流
 		}
 		panelCenter.revalidate();
 	}

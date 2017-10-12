@@ -8,6 +8,7 @@
 package com.wtw.view;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -21,6 +22,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.wtw.CalculateUtil;
+import com.wtw.component.MyButton;
+import com.wtw.component.MyLabel;
+import com.wtw.component.MyTextField;
 
 /**
  * 二、纵联距离保护
@@ -30,9 +34,10 @@ import com.wtw.CalculateUtil;
  */
 public class GpbhlfxbhDxView {
 	public GpbhlfxbhDxView(JPanel panelCenter) {
-
+		JPanel bigpanel = new JPanel();
+		bigpanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		bigpanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		JPanel panel = new JPanel();
-		panel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -56,7 +61,7 @@ public class GpbhlfxbhDxView {
 		c.weightx = 1/8;
 		panel.add(new JLabel("DZ(Ω)："),c);
 		
-		JTextField dzField = new JTextField("DZ(Ω)");
+		JTextField dzField = new MyTextField("DZ(Ω)");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 2;
@@ -69,7 +74,7 @@ public class GpbhlfxbhDxView {
 		c.weightx = 1/8;
 		panel.add(new JLabel("K："),c);
 		
-		JTextField kField = new JTextField("K");
+		JTextField kField = new MyTextField("K");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 3;
 		c.gridy = 2;
@@ -82,19 +87,19 @@ public class GpbhlfxbhDxView {
 		c.weightx = 1/8;
 		panel.add(new JLabel("故障角度ψ(°):"),c);
 		
-		JTextField ψField = new JTextField("78");
+		JTextField ψField = new MyTextField("78");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 5;
 		c.gridy = 2;
 		c.weightx = 1/8;
 		panel.add(ψField,c);
 		
-		JButton jButton = new JButton("计算");
-		JLabel msg = new JLabel("");
-		JLabel Um0_9 = new JLabel("");
-		JLabel Im0_9 = new JLabel("");
-		JLabel Um0_7 = new JLabel("");
-		JLabel Im0_7 = new JLabel("");
+		JButton jButton = new MyButton("计算");
+		JLabel msg = new MyLabel("");
+		JLabel Um0_9 = new MyLabel("");
+		JLabel Im0_9 = new MyLabel("");
+		JLabel Um0_7 = new MyLabel("");
+		JLabel Im0_7 = new MyLabel("");
 		jButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -162,6 +167,7 @@ public class GpbhlfxbhDxView {
 		c.gridy = 4;
 		c.weightx = 1/3;
 		panel.add(Im0_7,c);
-		panelCenter.add(panel);
+		bigpanel.add(panel);
+		panelCenter.add(bigpanel);
 	}
 }

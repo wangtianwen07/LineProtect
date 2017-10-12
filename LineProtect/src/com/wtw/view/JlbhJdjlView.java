@@ -27,13 +27,13 @@ import com.wtw.component.MyLabel;
 import com.wtw.component.MyTextField;
 
 /**
- * 工频变化量阻抗 单相接地故障
+ * 三、距离保护	接地距离(Ⅰ、Ⅱ、Ⅲ)段
  * @author wangtianwen
  * @version 1.0
  */
-public class GpbhlzkDxView {
+public class JlbhJdjlView {
 	
-	public GpbhlzkDxView(JPanel panelCenter) {
+	public JlbhJdjlView(JPanel panelCenter) {
 		JPanel bigpanel = new JPanel();
 		bigpanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		bigpanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -45,23 +45,23 @@ public class GpbhlzkDxView {
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 8;
-		panel.add(new JLabel("一.差动保护     C.工频变化量阻抗 "),c);
+		panel.add(new JLabel("三、距离保护 "),c);
 		
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = 8;
-		panel.add(new JLabel("1.单相接地故障"),c);
+		panel.add(new JLabel("1.接地距离(Ⅰ、Ⅱ、Ⅲ)段"),c);
 		
 		c.gridwidth = 1;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 2;
 		c.weightx = 1/8;
-		panel.add(new JLabel("DZ(Ω)："),c);
+		panel.add(new JLabel("接地距离定值(Ω)："),c);
 		
-		JTextField dzField = new MyTextField("DZ(Ω)");
+		JTextField dzField = new MyTextField("接地距离定值");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 2;
@@ -72,9 +72,9 @@ public class GpbhlzkDxView {
 		c.gridx = 2;
 		c.gridy = 2;
 		c.weightx = 1/8;
-		panel.add(new JLabel("K："),c);
+		panel.add(new JLabel("线路正序阻抗角(°)："),c);
 		
-		JTextField kField = new MyTextField("K");
+		JTextField kField = new MyTextField("线路正序阻抗角值");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 3;
 		c.gridy = 2;
@@ -85,9 +85,9 @@ public class GpbhlzkDxView {
 		c.gridx = 4;
 		c.gridy = 2;
 		c.weightx = 1/8;
-		panel.add(new JLabel("ψ:"),c);
+		panel.add(new JLabel("零序补偿系数:"),c);
 		
-		JTextField ψField = new MyTextField("ψ");
+		JTextField ψField = new MyTextField("零序补偿系数值");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 5;
 		c.gridy = 2;
@@ -96,12 +96,12 @@ public class GpbhlzkDxView {
 		
 		JButton jButton = new MyButton("计算");
 		JLabel msg = new MyLabel("");
-		JLabel Um1_1 = new MyLabel("");
-		JLabel Im1_1 = new MyLabel("");
-		JLabel Um0_9 = new MyLabel("");
-		JLabel Im0_9 = new MyLabel("");
-		JLabel Um1_2 = new MyLabel("");
-		JLabel Im1_2 = new MyLabel("");
+		JLabel Um0_95 = new MyLabel("");
+		JLabel Im0_95 = new MyLabel("");
+		JLabel Um1_05 = new MyLabel("");
+		JLabel Im1_05 = new MyLabel("");
+		JLabel Um0_7 = new MyLabel("");
+		JLabel Im0_7 = new MyLabel("");
 		jButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -111,12 +111,12 @@ public class GpbhlzkDxView {
 					double dz = Double.parseDouble(dzField.getText());//电流高值
 					double k = Double.parseDouble(kField.getText());//电流低值
 					double ψ = Double.parseDouble(ψField.getText());//参数值
-					Um1_1.setText(CalculateUtil.gpbhlzkDxU(dz,k,ψ, "1.1")+" V");
-					Um0_9.setText(CalculateUtil.gpbhlzkDxU(dz,k,ψ, "0.9")+" V");
-					Um1_2.setText(CalculateUtil.gpbhlzkDxU(dz,k,ψ,  "1.2")+ "V");
-					Im1_1.setText(CalculateUtil.gpbhlzkDxI(dz,k,ψ, "1.1")+" A");
-					Im0_9.setText(CalculateUtil.gpbhlzkDxI(dz,k,ψ, "0.9")+" A");
-					Im1_2.setText(CalculateUtil.gpbhlzkDxI(dz,k,ψ, "1.2")+ " A");
+					Um0_95.setText(CalculateUtil.jlbhJdjlU(dz,k,ψ, "0.95")+" V");
+					Um1_05.setText(CalculateUtil.jlbhJdjlU(dz,k,ψ, "1.05")+" V");
+					Um0_7.setText(CalculateUtil.jlbhJdjlU(dz,k,ψ,  "0.7")+ "V");
+					Im0_95.setText(CalculateUtil.jlbhJdjlI(dz,k,ψ, "0.95")+" A");
+					Im1_05.setText(CalculateUtil.jlbhJdjlI(dz,k,ψ, "1.05")+" A");
+					Im0_7.setText(CalculateUtil.jlbhJdjlI(dz,k,ψ, "0.7")+ " A");
 				} catch (Exception exception) {
 					msg.setText(exception.getMessage());
 				}
@@ -139,56 +139,56 @@ public class GpbhlzkDxView {
 		c.gridx = 0;
 		c.gridy = 3;
 		c.weightx = 1/3;
-		panel.add(new JLabel("m=1.1时:"),c);
+		panel.add(new JLabel("m=0.95时:"),c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 3;
 		c.weightx = 1/3;
-		panel.add(Um1_1,c);
+		panel.add(Um0_95,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 2;
 		c.gridy = 3;
 		c.weightx = 1/3;
-		panel.add(Im1_1,c);
+		panel.add(Im0_95,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 4;
 		c.weightx = 1/3;
-		panel.add(new JLabel("m=0.9时:"),c);
+		panel.add(new JLabel("m=1.05时:"),c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 4;
 		c.weightx = 1/3;
-		panel.add(Um0_9,c);
+		panel.add(Um1_05,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 2;
 		c.gridy = 4;
 		c.weightx = 1/3;
-		panel.add(Im0_9,c);
+		panel.add(Im1_05,c);
 		panelCenter.add(panel);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 5;
 		c.weightx = 1/3;
-		panel.add(new JLabel("m=0.9时:"),c);
+		panel.add(new JLabel("m=0.7时:"),c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 1;
 		c.gridy = 5;
 		c.weightx = 1/3;
-		panel.add(Um1_2,c);
+		panel.add(Um0_7,c);
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 2;
 		c.gridy = 5;
 		c.weightx = 1/3;
-		panel.add(Im1_2,c);
+		panel.add(Im0_7,c);
 		bigpanel.add(panel);
 		panelCenter.add(bigpanel);
 	}
